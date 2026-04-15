@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>LINE登録で豪華プレゼント</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fc;
+    --bg-warm: #eef0f7;
+    --brown: #2b2d42;
+    --brown-mid: #4a4c64;
+    --brown-light: #7b7d95;
+    --accent: #5b6abf;
+    --accent-glow: rgba(91, 106, 191, 0.12);
+    --cream: #e2e4f0;
+    --rose: #c97b9b;
+    --rose-soft: rgba(201, 123, 155, 0.1);
+    --white: #ffffff;
+    --shadow: 0 2px 20px rgba(43,45,66,0.06);
+    --shadow-lg: 0 8px 40px rgba(43,45,66,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--brown); line-height: 1.85; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 480px; margin: 0 auto; position: relative; }
+
+.hero { padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(170deg, #f9faff 0%, var(–cream) 100%); }
+.hero::before { content: ‘’; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, var(–accent-glow), transparent 70%); border-radius: 50%; }
+.hero::after { content: ‘’; position: absolute; bottom: -40px; left: -40px; width: 150px; height: 150px; background: radial-gradient(circle, var(–rose-soft), transparent 70%); border-radius: 50%; }
+.ribbon { display: inline-flex; align-items: center; gap: 6px; background: var(–white); border: 1px solid var(–cream); font-size: 12px; font-weight: 700; color: var(–accent); padding: 7px 18px; border-radius: 100px; margin-bottom: 20px; box-shadow: var(–shadow); animation: fadeDown 0.7s ease-out; letter-spacing: 0.04em; }
+.ribbon .dot { width: 6px; height: 6px; background: var(–rose); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+.hero-gift-icon { width: 80px; height: 80px; margin: 0 auto 18px; background: linear-gradient(145deg, #e0e4f8, #cdd2ed); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 40px; box-shadow: 0 6px 24px rgba(91,106,191,0.15); animation: fadeDown 0.7s 0.1s ease-out both; position: relative; }
+.hero-gift-icon::after { content: ‘✨’; position: absolute; top: -8px; right: -8px; font-size: 20px; animation: sparkle 2s ease-in-out infinite; }
+.hero h1 { font-size: 24px; font-weight: 900; color: var(–brown); line-height: 1.55; margin-bottom: 12px; animation: fadeDown 0.7s 0.2s ease-out both; }
+.hero h1 .highlight { background: linear-gradient(transparent 60%, rgba(91,106,191,0.18) 60%); padding: 0 2px; }
+.hero h1 .accent { color: var(–accent); }
+.hero-sub { font-size: 14px; color: var(–brown-light); line-height: 1.7; animation: fadeDown 0.7s 0.3s ease-out both; }
+
+.divider { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 40px; margin: 4px 0; }
+.divider::before, .divider::after { content: ‘’; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(–cream), transparent); }
+.divider span { font-size: 16px; opacity: 0.5; }
+
+.section-eyebrow { text-align: center; font-size: 12px; font-weight: 700; color: #b8860b; letter-spacing: 0.15em; margin-bottom: 6px; }
+.section-title { text-align: center; font-size: 22px; font-weight: 900; color: #b8860b; margin-bottom: 24px; line-height: 1.5; }
+
+.gifts { padding: 36px 24px; }
+.gift-card { background: var(–white); border: 1px solid rgba(91,106,191,0.1); border-radius: 16px; padding: 22px 20px; margin-bottom: 14px; display: flex; gap: 16px; align-items: flex-start; box-shadow: var(–shadow); transition: transform 0.25s, box-shadow 0.25s; }
+.gift-card:hover { transform: translateY(-2px); box-shadow: var(–shadow-lg); }
+.gift-card-icon { flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(145deg, #e8ebfa, #d5d9f0); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.gift-card-num { font-size: 11px; font-weight: 900; color: var(–accent); letter-spacing: 0.1em; margin-bottom: 4px; }
+.gift-card-title { font-size: 17px; font-weight: 900; color: var(–brown); margin-bottom: 5px; line-height: 1.4; }
+.gift-card-desc { font-size: 13px; color: var(–brown-mid); line-height: 1.7; }
+
+.why { padding: 32px 24px; background: var(–bg-warm); }
+.why-box { background: var(–white); border-radius: 16px; padding: 24px 20px; box-shadow: var(–shadow); }
+.why-box p { font-size: 14px; color: var(–brown-mid); line-height: 1.85; }
+
+.cta-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px; background: #06C755 !important; color: #fff !important; font-size: 17px; font-weight: 900; border: none; border-radius: 60px; cursor: pointer; text-decoration: none; box-shadow: 0 6px 28px rgba(6,199,85,0.3); transition: all 0.25s; position: relative; overflow: hidden; -webkit-appearance: none; }
+.cta-btn:hover { background: #05b34c !important; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(6,199,85,0.4); }
+.cta-btn svg { width: 22px; height: 22px; flex-shrink: 0; fill: currentColor; }
+.cta-btn .pulse { position: absolute; inset: 0; border-radius: 60px; border: 2px solid rgba(255,255,255,0.4); animation: pulse 2s ease-out infinite; }
+.copy-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px; margin-top: 10px; background: #fff !important; color: var(–brown) !important; font-size: 14px; font-weight: 700; border: 2px solid var(–cream); border-radius: 60px; cursor: pointer; text-decoration: none; }
+.toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-80px); background: var(–brown); color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; z-index: 9999; opacity: 0; transition: all 0.3s ease; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.tiktok-tip { font-size: 12px; color: var(–brown-light); margin-top: 10px; line-height: 1.6; text-align: center; display: none; }
+.is-tiktok .tiktok-tip { display: block; }
+.sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(247,248,252,0.96); backdrop-filter: blur(12px); border-top: 1px solid var(–cream); padding: 12px 20px; z-index: 100; transform: translateY(100%); transition: transform 0.4s ease; }
+.sticky-bar.visible { transform: translateY(0); }
+footer { text-align: center; padding: 20px 24px 100px; font-size: 11px; color: var(–brown-light); opacity: 0.7; }
+footer a { color: var(–brown-light); text-decoration: underline; cursor: pointer; }
+
+/* 特商法モーダル */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+.modal-overlay.active { display: flex; }
+.modal {
+background: var(–white);
+border-radius: 16px;
+padding: 28px 24px;
+max-width: 480px;
+width: 100%;
+max-height: 80vh;
+overflow-y: auto;
+box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+position: relative;
+}
+.modal-close {
+position: absolute;
+top: 16px;
+right: 16px;
+width: 32px;
+height: 32px;
+background: var(–bg);
+border: none;
+border-radius: 50%;
+font-size: 18px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(–brown-mid);
+}
+.modal h2 { font-size: 18px; font-weight: 900; color: var(–brown); margin-bottom: 20px; }
+.modal-row { display: flex; border-bottom: 1px solid var(–cream); padding: 12px 0; }
+.modal-row:last-child { border-bottom: none; }
+.modal-label { flex-shrink: 0; width: 120px; font-size: 13px; font-weight: 700; color: var(–brown); }
+.modal-value { font-size: 13px; color: var(–brown-mid); line-height: 1.7; word-break: break-all; }
+
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes sparkle { 0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); } 50% { opacity: 0.6; transform: scale(0.85) rotate(15deg); } }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+
+<!-- TikTok Pixel Code Start -->
+
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+  ttq.load('D7FIBCRC77UB839JTO5G');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<!-- TikTok Pixel Code End -->
+
+</head>
+<body>
+<div class="container">
+
+  <section class="hero">
+    <div class="ribbon"><span class="dot"></span>期間限定プレゼント配布中</div>
+    <div class="hero-gift-icon">🎁</div>
+    <h1>TikTokを見てくれた<br>あなたへ<span class="accent">特別な</span><br><span class="highlight">プレゼント</span>をご用意しました</h1>
+    <p class="hero-sub">LINE登録するだけで<br>今すぐ無料でお届けします</p>
+  </section>
+
+  <div class="divider"><span>&#9830;</span></div>
+
+  <section class="gifts fade-in">
+    <div class="section-eyebrow">Special Gift</div>
+    <h2 class="section-title">選ばれる3つのポイント</h2>
+    <div class="gift-card">
+      <div class="gift-card-icon">⚡</div>
+      <div>
+        <div class="gift-card-num">POINT 01</div>
+        <div class="gift-card-title">最短5分で受付完了</div>
+        <div class="gift-card-desc">面倒な手続きは一切なし。LINEから最短5分でサクッと受付できます</div>
+      </div>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🔓</div>
+      <div>
+        <div class="gift-card-num">POINT 02</div>
+        <div class="gift-card-title">手数料など一切不要</div>
+        <div class="gift-card-desc">手数料・登録料・年会費など、費用は一切かかりません。</div>
+      </div>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🛡️</div>
+      <div>
+        <div class="gift-card-num">POINT 03</div>
+        <div class="gift-card-title">安心のサポート体制</div>
+        <div class="gift-card-desc">わからないことがあればLINEでいつでもご相談いただけます</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 8px 24px 28px; text-align: center;" class="fade-in">
+    <a href="javascript:void(0)" onclick="openLine()" class="cta-btn" id="mainCta">
+      <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.508.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      プレゼントを受け取る
+      <span class="pulse"></span>
+    </a>
+    <button onclick="copyLine()" class="copy-btn">📋 LINEのURLをコピーして開く</button>
+    <p class="tiktok-tip">※ TikTokアプリ内では直接開けない場合があります。コピーしてブラウザに貼り付けてください。</p>
+  </section>
+
+  <section class="why fade-in">
+    <div class="section-eyebrow">Why Free?</div>
+    <h2 class="section-title">なぜ無料なの？</h2>
+    <div class="why-box">
+      <p>TikTokで私を知ってくださった方に、まずは価値を感じていただきたいという想いから特別にご用意しました。</p>
+    </div>
+  </section>
+
+  <footer>
+    <a onclick="openTokusho()">特定商取引法に基づく表記</a><br>
+    &copy; 2026 All Rights Reserved.
+  </footer>
+</div>
+
+<!-- 特商法モーダル -->
+
+<div class="modal-overlay" id="tokushoModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeTokusho()">✕</button>
+    <h2>特定商取引法に基づく表記</h2>
+    <div class="modal-row">
+      <div class="modal-label">販売事業者</div>
+      <div class="modal-value">株式会社アドイン</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">所在地</div>
+      <div class="modal-value">東京都渋谷区渋谷2-8-7</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">お問い合わせ</div>
+      <div class="modal-value">atq4528775@gmail.com</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">販売価格</div>
+      <div class="modal-value">無料</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">支払い方法</div>
+      <div class="modal-value">該当なし</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">商品の引渡し</div>
+      <div class="modal-value">LINE友だち追加後、即時提供</div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-label">返品・交換</div>
+      <div class="modal-value">デジタルコンテンツのため、返品・交換はお受けできません</div>
+    </div>
+  </div>
+</div>
+
+<!-- 追従ボタン -->
+
+<div class="sticky-bar" id="stickyBar">
+  <a href="javascript:void(0)" onclick="openLine()" class="cta-btn">
+    プレゼントを受け取る
+    <span class="pulse"></span>
+  </a>
+</div>
+
+<div class="toast" id="toast">✅ URLをコピーしました！</div>
+
+<script>
+  var LINE_URL = 'https://lin.ee/RM39m9M';
+
+  var ua = navigator.userAgent || '';
+  if (/TikTok|BytedanceWebview/i.test(ua)) {
+    document.body.classList.add('is-tiktok');
+  }
+
+  function openLine() {
+    window.location.href = LINE_URL;
+  }
+
+  function copyLine() {
+    var ta = document.createElement('textarea');
+    ta.value = LINE_URL;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 3000);
+  }
+
+  // 特商法モーダル
+  function openTokusho() {
+    document.getElementById('tokushoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTokusho() {
+    document.getElementById('tokushoModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('tokushoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeTokusho();
+  });
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+
+  var sticky = document.getElementById('stickyBar');
+  var mainCta = document.getElementById('mainCta');
+  new IntersectionObserver(function(entries) {
+    sticky.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0 }).observe(mainCta);
+</script>
+
+</body>
+</html>
